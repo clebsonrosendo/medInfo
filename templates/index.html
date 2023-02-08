@@ -7,19 +7,65 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
-<body>
-<div class="container">
+<body class="bg-light p-0">
+<div class="container h-75 m-1 p-4 bg-white shadow-sm position-absolute top-50 start-50 translate-middle border border-light-subtle rounded-1">
     <header>
         <div>
-            <h1>Bem-vindo ao MEDINFO - {{name}}</h1>
-            <p>Converta suas planilhas em arquivos BPA</p>
+            <h1 class="text-info">Bem-vindo ao MEDINFO</h1>
+            <p class="text-secondary">Converta suas planilhas facilmente</p>
         </div>
     </header>
-    <main></main>
+    <main>
+        <div class="container row p-2 pt-3 text-center">
+            <div class="col">
+                <div class="p-4 d-flex flex-column justify-content-center align-items-center border border-2 border-light-subtle rounded-1">
+                    <div>
+                        <i class="bi bi-cloud-upload fs-1 fs-bold text-secondary"></i>
+                        <p class="text-secondary-emphasis">Arraste seu arquivo ou</p>
+                    </div>
+                    <div>
+                        <form action="">
+                            <label id="arquivo_selecionado_label" class="text-info fs-bold" for="arquivo_selecionado">Gerenciador de arquivos</label>
+                            <input type="file" name="arquivo_selecionado" id="arquivo_selecionado">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <header>
+                    <h6>Detalhes</h6>
+                </header>
+                <div>
+                    <div>
+                        <div><p class="fs-bold">Nome:</p></div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div><p class="fs-bold">Tamanho:</p></div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div><p class="fs-bold">Último modificação:</p></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <header>
+                    <h6>Uploads recentes</h6>
+                </header>
+            </div>
+        </div>
+    </main>
     <footer></footer>
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script>
+
+</script>
 </html>

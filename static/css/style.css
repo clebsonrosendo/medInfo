@@ -1,0 +1,7 @@
+#arquivo_selecionado {
+    display:none;
+}
+
+#arquivo_selecionado_label {
+    cursor: pointer;
+}
