@@ -1,7 +1,10 @@
-#arquivo_selecionado {
+#input-select-file {
     display:none;
 }
 
 #arquivo_selecionado_label {
     cursor: pointer;
+}
+
+.box-up-file {
 }
