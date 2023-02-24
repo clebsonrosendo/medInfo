@@ -1,24 +1,46 @@
 let file
-let dropFile
 let dateFormatBr
 let fileSize
 let fileType
 
-function uploadFile(dropFile) {
 
-    if(dropFile === undefined) {
+function dropHandler(ev) {
+  // Evitar comportamento padrão do navegador
+  ev.preventDefault();
 
-        let file = document.getElementById('input-select-file').files[0];
-        let dateFormatBr = new Intl.DateTimeFormat('pt-BR').format(file.lastModifiedDate);
-        let fileSize = (file.size / 1048576).toFixed(2) + ' MB';
-        let fileType = file.type;
+  let dropFile = ev.dataTransfer.files
+  uploadFileDrop(dropFile[0])
 
-    } else {
-       let file = dropFile[0]
-       let dateFormatBr = new Intl.DateTimeFormat('pt-BR').format(file.lastModifiedDate);
-       let fileSize = (file.size / 1048576).toFixed(2) + ' MB';
-       let fileType = file.type;
-    }
+}
+
+
+function dragOverHandler(ev) {
+   // Evitar comportamento padrão do navegador
+  ev.preventDefault();
+}
+
+
+function uploadFile() {
+    // Quando o input é acionado
+    let file = document.getElementById('input-select-file').files[0];
+    detailsFile(file)
+
+}
+
+
+function uploadFileDrop(dropFile) {
+    // Quando o drop é acionado
+    let file = dropFile
+    detailsFile(file)
+
+}
+
+
+function detailsFile(file) {
+
+    let dateFormatBr = new Intl.DateTimeFormat('pt-BR').format(file.lastModifiedDate);
+    let fileSize = (file.size / 1048576).toFixed(2) + ' MB';
+    let fileType = file.type;
 
 
     if (file !== '' && file.size < 5242880 && file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
@@ -52,17 +74,3 @@ function uploadFile(dropFile) {
 }
 
 
-function dropHandler(ev) {
-  // Prevent default behavior (Prevent file from being opened)
-  ev.preventDefault();
-
-
-  let dropFile = ev.dataTransfer.files
-  uploadFile(dropFile)
-}
-
-
-function dragOverHandler(ev) {
-  // Prevent default behavior (Prevent file from being opened)
-  ev.preventDefault();
-}
