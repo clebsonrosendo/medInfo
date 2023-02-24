@@ -1,14 +1,25 @@
 let file
+let dropFile
 let dateFormatBr
 let fileSize
 let fileType
 
-function uploadFile() {
+function uploadFile(dropFile) {
 
-    let file = document.getElementById('input-select-file').files[0];
-    let dateFormatBr = new Intl.DateTimeFormat('pt-BR').format(file.lastModifiedDate);
-    let fileSize = (file.size / 1048576).toFixed(2) + ' MB';
-    let fileType = file.type;
+    if(dropFile === undefined) {
+
+        let file = document.getElementById('input-select-file').files[0];
+        let dateFormatBr = new Intl.DateTimeFormat('pt-BR').format(file.lastModifiedDate);
+        let fileSize = (file.size / 1048576).toFixed(2) + ' MB';
+        let fileType = file.type;
+
+    } else {
+       let file = dropFile[0]
+       let dateFormatBr = new Intl.DateTimeFormat('pt-BR').format(file.lastModifiedDate);
+       let fileSize = (file.size / 1048576).toFixed(2) + ' MB';
+       let fileType = file.type;
+    }
+
 
     if (file !== '' && file.size < 5242880 && file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
 
@@ -22,6 +33,8 @@ function uploadFile() {
         $('#box-up-file').removeClass('border-light-subtle border-danger')
         $('#box-up-file').addClass('border-success')
 
+        $('#btn-submit').removeClass('d-none')
+
 
     } else {
 
@@ -33,5 +46,23 @@ function uploadFile() {
         $('#box-up-file').removeClass('border-light-subtle border-success')
         $('#box-up-file').addClass('border-danger')
 
+        $('#btn-submit').addClass('d-none')
+
     }
+}
+
+
+function dropHandler(ev) {
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
+
+
+  let dropFile = ev.dataTransfer.files
+  uploadFile(dropFile)
+}
+
+
+function dragOverHandler(ev) {
+  // Prevent default behavior (Prevent file from being opened)
+  ev.preventDefault();
 }
