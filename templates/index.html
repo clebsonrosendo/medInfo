@@ -33,7 +33,10 @@
                         <p class="text-secondary-emphasis p-0 m-0">Arraste seu arquivo ou</p>
                     </div>
                     <div class="p-0 m-0">
-                        <form action="">
+                        <form
+                                action="/upload"
+                                method="post"
+                                enctype="multipart/form-data">
                             <label id="arquivo_selecionado_label" class="text-info fs-bold" for="input-select-file">Gerenciador de arquivos</label>
                             <input
                                     type="file"
